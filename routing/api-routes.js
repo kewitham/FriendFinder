@@ -56,7 +56,7 @@ module.exports = function (app) {
 			}
 		 	
 		 	var bestFriendIndex = Array.min(totalDiff);
-		 	var bestFriend = friendData[bestFriendIndex];
+		 	var bestFriend = friendData[bestFriendIndex].survey_name + friendData[bestFriendIndex].survey_photo;
 
 		 	alert("Your closest match is " + bestFriend)
 		 	//res.json(true); // KEY LINE
