@@ -1,7 +1,7 @@
 var friendArray = [
 	{
-		
 
+		
 	}
 ];
 
