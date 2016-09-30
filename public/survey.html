@@ -118,6 +118,12 @@ $("#submitsurvey").on("click", function() {
 
     console.log(newFriend);
 
+    var currentURL = window.location.origin;
+
+    $.post(currentURL + "/api/friends", newFriend,
+        function(data){
+        })
+
     // var currentURL = window.location.origin;
 
     // $.post(currentURL + "api/friends", newFriend,
@@ -140,7 +146,7 @@ $("#submitsurvey").on("click", function() {
 
     //     });
 
-    // return false;
+     return false;
 
 });
 
