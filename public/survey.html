@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FriendFinder Survey Page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="glyphicon glyphicon-phone-alt"></span> FriendFinder</h1>
+            <hr>
+            <h2 class="text-center">Welcome to the worst way to measure compatibility!</h2>
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Friend Finder Survey</h4>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" id="survey_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Unique ID</label>
+                            <input type="text" class="form-control" id="survey_uniqueID">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Photo Link</label>
+                            <input type="text" class="form-control" id="survey_photo">
+                        </div>
+                    </form>
+                </div>
+                <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">Rank your level of agreement with the following statements on a scale of 1-5, 5 meaning you strongly agree and 1 meaning you strongly disagree.</h4>
+                      </div>
+                      <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="">Dogs are better than cats.</label>
+                                <input type="text" class="form-control" id="survey_Q1">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Women have an obligation to keep their legs shaved.</label>
+                                <input type="text" class="form-control" id="survey_Q2">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Spelling and grammar mistakes are annoying.</label>
+                                <input type="text" class="form-control" id="survey_Q3">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Mosquitos should be wiped off the planet.</label>
+                                <input type="text" class="form-control" id="survey_Q4">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Dinosaurs are a real thing.</label>
+                                <input type="text" class="form-control" id="survey_Q5">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Living underwater would be awesome.</label>
+                                <input type="text" class="form-control" id="survey_Q6">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Astrology is a legtimate science.</label>
+                                <input type="text" class="form-control" id="survey_Q7">
+                            </div>
+                             <div class="form-group">
+                                <label for="">It's best to stick with what you know rather than trying new unknowns.</label>
+                                <input type="text" class="form-control" id="survey_Q8">
+                            </div>
+                             <div class="form-group">
+                                <label for="">Mustaches are cool and make a statement.</label>
+                                <input type="text" class="form-control" id="survey_Q9">
+                            </div>
+                             <div class="form-group">
+                                <label for="">Beards are cooler than mustaches.</label>
+                                <input type="text" class="form-control" id="survey_Q10">
+                            </div>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/kewitham/friendfinder">GitHub Repo</a></p>
+         </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+// In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
+// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
+
+$(".submit").on("click", function() {
+
+    // Here we grab the form elements
+    var newFriend = {
+        name: $('#survey_name').val().trim(),
+        id: $('#survey_uniqueID').val().trim(),
+        photo: $('#survey_photo'),
+        questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
+    };
+
+    console.log(newFriend);
+
+    // This line is the magic. It's very similar to the standard ajax function we used. 
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not. 
+
+    // Here we get the location of the root page. 
+    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+    var currentURL = window.location.origin;
+
+    $.post(currentURL + "/api/friends", newFriend,
+        function(data) {
+
+            // Clear the form when submitting
+            $('#survey_name').val("");
+            $('#survey_uniqueID').val("");
+            $('#survey_photo').val("");
+            $('#survey_Q1').val("");
+            $('#survey_Q2').val("");
+            $('#survey_Q3').val("");
+            $('#survey_Q4').val("");
+            $('#survey_Q5').val("");
+            $('#survey_Q6').val("");
+            $('#survey_Q7').val("");
+            $('#survey_Q8').val("");
+            $('#survey_Q9').val("");
+            $('#survey_Q10').val("");
+
+        });
+
+    return false;
+
+});
+</script>
