@@ -82,7 +82,7 @@
                                 <label for="">Beards are cooler than mustaches.</label>
                                 <input type="text" class="form-control" id="survey_Q10">
                             </div>
-                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button id="submitsurvey" type="submit" class="btn btn-primary submit">Submit</button>
                     </form>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
 // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
 // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
 
-$(".submit").on("click", function() {
+$("#submitsurvey").on("click", function() {
 
     // Here we grab the form elements
     var newFriend = {
@@ -144,75 +144,78 @@ $(".submit").on("click", function() {
 
 });
 
-     function runFriendQuery(){
+    //  function runFriendQuery(){
 
-    //     // Here we get the location of the root page. 
-    //     // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-         var currentURL = window.location.origin;
+    // //     // Here we get the location of the root page. 
+    // //     // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+    //      var currentURL = window.location.origin;
 
-    //     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-         $.ajax({url: currentURL + "/api/friends", method: "GET"}) 
-            .done(function(friendData) {
+    // //     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    //      $.ajax({url: currentURL + "/api/friends", method: "GET"}) 
+    //         .done(function(friendData) {
 
-            for (i=0; i<(friendData.length-1); i++){
-            var newFriend = friendData[friendData.length];
-            var friendDiff = [];
-            var totalDiff = [];
-            for (b=0; b<friendData.questions.length; b++){
-            friendDiff.push(Math.abs(newFriend[b] - friendData[i].questions[b]));
-            }
-            totalDiff.push(friendDiff.reduce(add, 0))
-            // Array.min = function(array){
-            //  return Math.min.apply(Math, array);
-            // }
-            Array.min = function indexOfMin(arr) {
-                if (arr.length === 0) {
-                return -1;
-                                     }
+    //         for (i=0; i<(friendData.length-1); i++){
+    //         var newFriend = friendData[friendData.length];
+    //         console.log(newFriend)
+    //         var friendDiff = [];
+    //         var totalDiff = [];
+    //         for (b=0; b<friendData.questions.length; b++){
+    //         friendDiff.push(Math.abs(newFriend[b] - friendData[i].questions[b]));
+    //         }
+    //         console.log(friendDiff)
+    //         totalDiff.push(friendDiff.reduce(add, 0))
+    //         // Array.min = function(array){
+    //         //  return Math.min.apply(Math, array);
+    //         // }
+    //         Array.min = function indexOfMin(arr) {
+    //             if (arr.length === 0) {
+    //             return -1;
+    //                                  }
 
-            var min = arr[0];
-            var minIndex = 0;
+    //         var min = arr[0];
+    //         var minIndex = 0;
 
-            for (var i = 1; i < arr.length; i++) {
-                if (arr[i] < min) {
-                minIndex = i;
-                min = arr[i];
-                }
-            }
+    //         for (var i = 1; i < arr.length; i++) {
+    //             if (arr[i] < min) {
+    //             minIndex = i;
+    //             min = arr[i];
+    //             }
+    //         }
 
-            return minIndex;
-            }
+    //         return minIndex;
+    //         }
             
-            var bestFriendIndex = Array.min(totalDiff);
-            var bestFriend = friendData[bestFriendIndex].survey_name + friendData[bestFriendIndex].survey_photo;
-
-            alert("Your closest match is " + bestFriend)
-                 }
-             });
-     }
+    //         var bestFriendIndex = Array.min(totalDiff);
+    //         console.log(bestFriendIndex);
+    //         var bestFriend = friendData[bestFriendIndex].survey_name + friendData[bestFriendIndex].survey_photo;
+    //         console.log(bestFriend);
+    //         alert("Your closest match is " + bestFriend)
+    //              }
+    //          });
+    //  }
 
     
 
-    // // This function resets all of the data in our tables. This is intended to let you restart a demo.
-    // function clearSurvey(){
+    // // // This function resets all of the data in our tables. This is intended to let you restart a demo.
+    // // function clearSurvey(){
 
-    //     var currentURL = window.location.origin;
-    //     $.ajax({url: currentURL + "/api/clear", method: "POST"}) 
+    // //     var currentURL = window.location.origin;
+    // //     $.ajax({url: currentURL + "/api/clear", method: "POST"}) 
 
-    // }
+    // // }
 
-    // $("#clear").on('click', function(){
-    //     alert("Clearing...");
-    //     clearTable();
+    // // $("#clear").on('click', function(){
+    // //     alert("Clearing...");
+    // //     clearTable();
 
-    //     // Refresh the page after data is cleared
-    //     location.reload();
-    // })
+    // //     // Refresh the page after data is cleared
+    // //     location.reload();
+    // // })
 
 
-    // // Run Queries!
-    // // ==========================================
-     runFriendQuery();
+    // // // Run Queries!
+    // // // ==========================================
+    //  runFriendQuery();
 
 
 </script>
