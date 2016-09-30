@@ -6,7 +6,7 @@
     <title>FriendFinder Survey Page</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -99,6 +99,8 @@
 </html>
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
+//<script src="jquery-1.12.4.min.js">
+
 // In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
 // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
 // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
