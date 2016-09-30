@@ -118,36 +118,29 @@ $(".submit").on("click", function() {
 
     console.log(newFriend);
 
-    // This line is the magic. It's very similar to the standard ajax function we used. 
-    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-    // depending on if a tables is available or not. 
+    // var currentURL = window.location.origin;
 
-    // Here we get the location of the root page. 
-    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-    var currentURL = window.location.origin;
+    // $.post(currentURL + "api/friends", newFriend,
+    //     function(data) {
 
-    $.post(currentURL + "/api/friends", newFriend,
-        function(data) {
+    //         // Clear the form when submitting
+    //         $('#survey_name').val("");
+    //         $('#survey_uniqueID').val("");
+    //         $('#survey_photo').val("");
+    //         $('#survey_Q1').val("");
+    //         $('#survey_Q2').val("");
+    //         $('#survey_Q3').val("");
+    //         $('#survey_Q4').val("");
+    //         $('#survey_Q5').val("");
+    //         $('#survey_Q6').val("");
+    //         $('#survey_Q7').val("");
+    //         $('#survey_Q8').val("");
+    //         $('#survey_Q9').val("");
+    //         $('#survey_Q10').val("");
 
-            // Clear the form when submitting
-            $('#survey_name').val("");
-            $('#survey_uniqueID').val("");
-            $('#survey_photo').val("");
-            $('#survey_Q1').val("");
-            $('#survey_Q2').val("");
-            $('#survey_Q3').val("");
-            $('#survey_Q4').val("");
-            $('#survey_Q5').val("");
-            $('#survey_Q6').val("");
-            $('#survey_Q7').val("");
-            $('#survey_Q8').val("");
-            $('#survey_Q9').val("");
-            $('#survey_Q10').val("");
+    //     });
 
-        });
-
-    return false;
+    // return false;
 
 });
 
