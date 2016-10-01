@@ -1,3 +1,5 @@
+
+
 var friendData = require('../data/friends.js');
 
 // ===============================================================================
@@ -24,15 +26,44 @@ module.exports = function (app) {
 	// Then the server saves the data to the tableData array)
 	// ---------------------------------------------------------------------------
 
+	$("#submitsurvey").on("click", function() {
+
+    // Here we grab the form elements
+    var newFriend = {
+        name: $('#survey_name').val().trim(),
+        id: $('#survey_uniqueID').val().trim(),
+        photo: $('#survey_photo'),
+        questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
+    };
+
+    console.log(newFriend);
+
 	app.post('/api/friends', function (req, res) {
-		friendData.push(req.body);
-	 		for (i=0; i<(friendData.length-1); i++){
-	            var newFriend = friendData[friendData.length];
-	            console.log(newFriend)
+		friendArray.push(req.body);
+
+	// 	var matchIndex = 0;
+	// 	var differences = [];
+
+	// 	for ( var i = 0; i < friendsData.length; i++ ) {
+
+ //    		var totalDifference = 0;
+
+ //    	for ( var j = 0; j < friendsData[ i ].scores.length; j++ ) {
+ //        totalDifference += Math.abs( req.body.scores[ j ] - friendsData[ i ].scores[ j ] );
+ //    	}
+
+ //    differences.push( totalDifference );
+	// }
+
+	// matchIndex = differences.indexOf( Math.min.apply( Math, differences ) );
+	// console.log(matchIndex)
+	 		for (i=0; i<(friendArray.length-1); i++){
+	            var newFriend = friendArray[friendArray.length];
+	            console.log('New:', newFriend)
 	            var friendDiff = [];
 	            var totalDiff = [];
-		            for (b=0; b<friendData.questions.length; b++){
-		            friendDiff.push(Math.abs(newFriend[b] - friendData[i].questions[b]));
+		            for (b=0; b<friendArray.questions.length; b++){
+		            friendDiff.push(Math.abs(newFriend[b] - friendArray[i].questions[b]));
 		            }
 			            console.log(friendDiff)
 			            totalDiff.push(friendDiff.reduce(add, 0))
@@ -59,11 +90,12 @@ module.exports = function (app) {
             
             var bestFriendIndex = Array.min(totalDiff);
             console.log(bestFriendIndex);
-            var bestFriend = friendData[bestFriendIndex].survey_name + friendData[bestFriendIndex].survey_photo;
+            var bestFriend = friendArray[bestFriendIndex].survey_name + friendArray[bestFriendIndex].survey_photo;
             console.log(bestFriend);
             alert("Your closest match is " + bestFriend)
                  }
              });
+});
 		 	
 
 		 	//res.json(false); // KEY LINE

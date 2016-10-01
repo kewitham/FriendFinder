@@ -106,49 +106,49 @@
 // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
 // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
 
-$("#submitsurvey").on("click", function() {
+// $("#submitsurvey").on("click", function() {
 
-    // Here we grab the form elements
-    var newFriend = {
-        name: $('#survey_name').val().trim(),
-        id: $('#survey_uniqueID').val().trim(),
-        photo: $('#survey_photo'),
-        questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
-    };
+//     // Here we grab the form elements
+//     var newFriend = {
+//         name: $('#survey_name').val().trim(),
+//         id: $('#survey_uniqueID').val().trim(),
+//         photo: $('#survey_photo'),
+//         questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
+//     };
 
-    console.log(newFriend);
+//     console.log(newFriend);
 
-    var currentURL = window.location.origin;
+//     // var currentURL = window.location.origin;
 
-    $.post(currentURL + "/api/friends", newFriend,
-        function(data){
-        })
+//     // $.post(currentURL + "/api/friends", newFriend,
+//     //     function(data){
+//     //     })
 
-    // var currentURL = window.location.origin;
+//     // var currentURL = window.location.origin;
 
-    // $.post(currentURL + "api/friends", newFriend,
-    //     function(data) {
+//     // $.post(currentURL + "api/friends", newFriend,
+//     //     function(data) {
 
-    //         // Clear the form when submitting
-    //         $('#survey_name').val("");
-    //         $('#survey_uniqueID').val("");
-    //         $('#survey_photo').val("");
-    //         $('#survey_Q1').val("");
-    //         $('#survey_Q2').val("");
-    //         $('#survey_Q3').val("");
-    //         $('#survey_Q4').val("");
-    //         $('#survey_Q5').val("");
-    //         $('#survey_Q6').val("");
-    //         $('#survey_Q7').val("");
-    //         $('#survey_Q8').val("");
-    //         $('#survey_Q9').val("");
-    //         $('#survey_Q10').val("");
+//     //         // Clear the form when submitting
+//     //         $('#survey_name').val("");
+//     //         $('#survey_uniqueID').val("");
+//     //         $('#survey_photo').val("");
+//     //         $('#survey_Q1').val("");
+//     //         $('#survey_Q2').val("");
+//     //         $('#survey_Q3').val("");
+//     //         $('#survey_Q4').val("");
+//     //         $('#survey_Q5').val("");
+//     //         $('#survey_Q6').val("");
+//     //         $('#survey_Q7').val("");
+//     //         $('#survey_Q8').val("");
+//     //         $('#survey_Q9').val("");
+//     //         $('#survey_Q10').val("");
 
-    //     });
+//     //     });
 
-     return false;
+//      return false;
 
-});
+// });
 
     //  function runFriendQuery(){
 
