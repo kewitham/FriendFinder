@@ -7,6 +7,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery.js"></script>
+
 </head>
 
 <body>
@@ -105,18 +106,79 @@
 // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
 // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
 // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
+//var friendData = require('../data/friends.js');
 
-// $("#submitsurvey").on("click", function() {
 
-//     // Here we grab the form elements
-//     var newFriend = {
-//         name: $('#survey_name').val().trim(),
-//         id: $('#survey_uniqueID').val().trim(),
-//         photo: $('#survey_photo'),
-//         questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
-//     };
+$("#submitsurvey").on("click", function() {
 
-//     console.log(newFriend);
+    // Here we grab the form elements
+    var newFriend = {
+        name: $('#survey_name').val().trim(),
+        id: $('#survey_uniqueID').val().trim(),
+        photo: $('#survey_photo'),
+        questions: [$('#survey_Q1').val().trim(), $('#survey_Q2').val().trim(), $('#survey_Q3').val().trim(), $('#survey_Q4').val().trim(), $('#survey_Q5').val().trim(), $('#survey_Q6').val().trim(), $('#survey_Q7').val().trim(), $('#survey_Q8').val().trim(), $('#survey_Q9').val().trim(), $('#survey_Q10').val().trim()],
+    };
+
+    console.log(newFriend);
+
+});
+
+    //  var matchIndex = 0;
+    //  var differences = [];
+
+    //  for ( var i = 0; i < friendsData.length; i++ ) {
+
+ //         var totalDifference = 0;
+
+ //     for ( var j = 0; j < friendsData[ i ].scores.length; j++ ) {
+ //        totalDifference += Math.abs( req.body.scores[ j ] - friendsData[ i ].scores[ j ] );
+ //     }
+
+ //    differences.push( totalDifference );
+    // }
+
+    // matchIndex = differences.indexOf( Math.min.apply( Math, differences ) );
+    // console.log(matchIndex)
+//             for (i=0; i<(friendArray.length-1); i++){
+//                 var newFriend = friendArray[friendArray.length];
+//                 console.log('New:', newFriend)
+//                 var friendDiff = [];
+//                 var totalDiff = [];
+//                     for (b=0; b<friendArray.questions.length; b++){
+//                     friendDiff.push(Math.abs(newFriend[b] - friendArray[i].questions[b]));
+//                     }
+//                         console.log(friendDiff)
+//                         totalDiff.push(friendDiff.reduce(add, 0))
+//             // Array.min = function(array){
+//             //  return Math.min.apply(Math, array);
+//             // }
+//                         Array.min = function indexOfMin(arr) {
+//                             if (arr.length === 0) {
+//                             return -1;
+//                                                  }
+
+//                         var min = arr[0];
+//                         var minIndex = 0;
+
+//                 for (var i = 1; i < arr.length; i++) {
+//                     if (arr[i] < min) {
+//                     minIndex = i;
+//                     min = arr[i];
+//                     }
+//                 }
+
+//                 return minIndex;
+//                 }
+            
+//             var bestFriendIndex = Array.min(totalDiff);
+//             console.log(bestFriendIndex);
+//             var bestFriend = friendArray[bestFriendIndex].survey_name + friendArray[bestFriendIndex].survey_photo;
+//             console.log(bestFriend);
+//             alert("Your closest match is " + bestFriend)
+//                  }
+//              });
+// });
+//}
 
 //     // var currentURL = window.location.origin;
 
